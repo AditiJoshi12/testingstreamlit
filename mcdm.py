@@ -97,7 +97,7 @@ cars_under_budget = cars[cars.Price <= budget]
 
 # In[14]:
 
-if len(pref) < m-1:
+if len(pref) < m:
     weights = np.zeros(m)
 else:
     weights = np.zeros(n)
