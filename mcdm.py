@@ -45,7 +45,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 #from sklearn.preprocessing import minmax_scale
 from skcriteria import Data, MIN, MAX
-from termcolor import colored
+#from termcolor import colored
 import warnings
 warnings.filterwarnings('ignore')
 
