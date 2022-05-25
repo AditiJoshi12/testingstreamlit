@@ -7,18 +7,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import random
-import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.preprocessing import minmax_scale
 from skcriteria import Data, MIN, MAX
-from termcolor import colored
-import warnings
-warnings.filterwarnings('ignore')
 
+st.title("Cars For You!")
 
-st.write("Hello World!")
-
-st.title("This is title.")
+st.write("Here I recommend cars based on your budget, priorities and preferred Fuel Type.")
 
 
 cars = pd.read_csv('final1_cars_dataset.csv', index_col=0)
@@ -31,7 +25,8 @@ cols.remove('Fuel_Type')
 budget = st.number_input('Your budget: ')
 
 pref = st.multiselect(
-    'Select from the options below according to your preference order', cols)
+    'Select the options below according to your priorities', cols)
+
 #st.write(pref)
 fueltypes = list(cars.Fuel_Type.unique())
 fueltypes.append("Any")
