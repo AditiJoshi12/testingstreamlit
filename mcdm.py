@@ -105,8 +105,6 @@ cars_under_budget_ranksorted = cars_under_budget.sort_values('Rank');
 #st.write(index)
 index = cars_under_budget_ranksorted.iloc[:10, :].index
 
-# In[ ]:
-
 cars_info = pd.read_csv('final1_cars_dataset.csv', index_col=0)
 
 if fueltype == 'Any':
@@ -118,4 +116,15 @@ else:
 carinfo_cols = ['Make', 'Model', 'Variant', 'Price', 'Power', 'Mileage', 'Fuel_Type']
 #rank = 1;
 #cars_info.insert(0, "Rank", dec.rank_, True)
+
+st.write('Top cars according to your Priority')
+
 st.write(cars_info_under_budget[carinfo_cols])
+
+with st.sidebar:
+    st.title('Want to get such stunning visuals? Upload your data here and I will get back to you!')
+    uploaded_file = st.file_uploader('Please upload CSV file with size not more than 200 MB!')
+    if uploaded_file is not None:
+        st.text('Your file was recieved!')
+        st.snow()
+    st.header('Or you can send me an email at adp02.joshi@gmail.com!')
