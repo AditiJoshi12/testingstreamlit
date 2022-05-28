@@ -39,7 +39,7 @@ st.write("Cars for You is a Priority Based Decision Support system which suggest
 cars = pd.read_csv('final1_cars_dataset.csv', index_col=0)
 cars2 = cars.iloc[:, 3:]
 
-cars_info = pd.read_csv('./streamlit/final_clean_cardataset.csv', index_col=0)
+cars_info = pd.read_csv('final_clean_cardataset.csv', index_col=0)
 
 gb = GridOptionsBuilder.from_dataframe(cars_info)
 gb.configure_pagination()
