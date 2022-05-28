@@ -5,6 +5,7 @@
 
 import streamlit as st
 from st_aggrid import AgGrid
+from st_aggrid import GridOptionsBuilder
 import pandas as pd
 import numpy as np
 import random
@@ -37,6 +38,18 @@ st.write("Cars for You is a Priority Based Decision Support system which suggest
 
 cars = pd.read_csv('final1_cars_dataset.csv', index_col=0)
 cars2 = cars.iloc[:, 3:]
+
+cars_info = pd.read_csv('./streamlit/final_clean_cardataset.csv', index_col=0)
+
+gb = GridOptionsBuilder.from_dataframe(cars_info)
+gb.configure_pagination()
+#grouping, pinning, aggregation
+gb.configure_side_bar()
+gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, aggFunc="sum", editable=True)
+gridOptions = gb.build()
+
+st.write("Browse through the data below:")
+AgGrid(cars_info, gridOptions=gridOptions, enable_enterprise_modules=True)
 
 cols = list(cars2.columns)
 cols.remove('Fuel_Type')
@@ -91,9 +104,6 @@ else:
     weights = np.zeros(n)
     for i in range(n):
         weights[i] = pref_order[cols[i]]
-
-
-cars_info = pd.read_csv('final_clean_cardataset.csv', index_col=0)
 
 if len(pref) < m:
     if budget <= 0:
